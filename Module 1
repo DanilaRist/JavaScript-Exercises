@@ -1,0 +1,175 @@
+1. console.log("I'm printing to console!");
+
+2. 
+    var userName = prompt("What is your name?");
+
+    document.write("<p>Hello, " + userName + "!</p>");
+
+3.
+    var num1 = prompt("Enter the first integer:");
+    var num2 = prompt("Enter the second integer:");
+    var num3 = prompt("Enter the third integer:");
+
+    num1 = parseInt(num1);
+    num2 = parseInt(num2);
+    num3 = parseInt(num3);
+
+    var sum = num1 + num2 + num3;
+    var product = num1 * num2 * num3;
+    var average = sum / 3;
+
+    document.write("<p>Sum: " + sum + "</p>");
+    document.write("<p>Product: " + product + "</p>");
+    document.write("<p>Average: " + average + "</p>");
+
+4.
+
+    var studentName = prompt("What is your name?");
+
+    var houseNumber = Math.floor(Math.random() * 4) + 1;
+
+    var house;
+    switch (houseNumber) {
+        case 1:
+            house = "Gryffindor";
+            break;
+        case 2:
+            house = "Slytherin";
+            break;
+        case 3:
+            house = "Hufflepuff";
+            break;
+        case 4:
+            house = "Ravenclaw";
+            break;
+        default:
+            house = "Unknown";
+    }
+
+    document.write("<p>" + studentName + ", you are in " + house + "!</p>");
+
+5.
+
+    var inputYear = prompt("Enter a year:");
+
+    var year = parseInt(inputYear);
+
+    var isLeapYear = false;
+    if ((year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0)) {
+        isLeapYear = true;
+    }
+
+    if (isLeapYear) {
+        document.write("<p>" + year + " is a leap year!</p>");
+    } else {
+        document.write("<p>" + year + " is not a leap year.</p>");
+    }
+
+6.
+
+    var shouldCalculate = confirm("Calculate the square root?");
+
+    if (shouldCalculate) {
+  
+        var inputNumber = prompt("Enter a number:");
+
+        var number = parseFloat(inputNumber);
+
+        if (number < 0) {
+            document.write("<p>The square root of a negative number is not defined.</p>");
+        } else {
+            
+            var squareRoot = Math.sqrt(number);
+            document.write("<p>The square root of " + number + " is: " + squareRoot + "</p>");
+        }
+    } else {
+        document.write("<p>The square root is not calculated.</p>");
+    }
+
+
+7.
+
+    var numberOfDiceRolls = prompt("Enter the number of dice rolls:");
+
+    numberOfDiceRolls = parseInt(numberOfDiceRolls);
+
+    function rollDie() {
+        return Math.floor(Math.random() * 6) + 1; 
+    }
+    var sum = 0;
+    for (var i = 0; i < numberOfDiceRolls; i++) {
+        var result = rollDie();
+        sum += result;
+        console.log("Roll " + (i + 1) + ": " + result); 
+    }
+
+    document.write("<p>Sum of " + numberOfDiceRolls + " dice rolls: " + sum + "</p>");
+
+8.
+
+    var startYear = prompt("Enter the start year:");
+    var endYear = prompt("Enter the end year:");
+
+    startYear = parseInt(startYear);
+    endYear = parseInt(endYear);
+
+    function isLeapYear(year) {
+        return (year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0);
+    }
+    document.write("<ul>");
+    for (var year = startYear; year <= endYear; year++) {
+        if (isLeapYear(year)) {
+            document.write("<li>" + year + "</li>");
+        }
+    }
+    document.write("</ul>");
+
+9.
+
+     var userInput = prompt("Enter a number:");
+
+    var number = parseInt(userInput);
+
+    function isPrime(num) {
+        if (num <= 1) {
+            return false;
+        }
+        for (var i = 2; i <= Math.sqrt(num); i++) {
+            if (num % i === 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    if (isPrime(number)) {
+        document.write("<p>" + number + " is a prime number!</p>");
+    } else {
+        document.write("<p>" + number + " is not a prime number.</p>");
+    }
+
+10.
+
+ var numberOfDice = prompt("Enter the number of dice:");
+    var targetSum = prompt("Enter the target sum:");
+
+    numberOfDice = parseInt(numberOfDice);
+    targetSum = parseInt(targetSum);
+
+    var successfulOutcomes = 0;
+    var numberOfSimulations = 10000;
+
+    for (var i = 0; i < numberOfSimulations; i++) {
+        // Roll the dice and calculate the sum
+        var sum = 0;
+        for (var j = 0; j < numberOfDice; j++) {
+            sum += Math.floor(Math.random() * 6) + 1; 
+        }
+
+        if (sum === targetSum) {
+            successfulOutcomes++;
+        }
+    }
+    var probability = (successfulOutcomes / numberOfSimulations) * 100;
+
+    document.write("<p>Probability to get sum " + targetSum + " with " + numberOfDice + " dice is " + probability.toFixed(2) + "%</p>");

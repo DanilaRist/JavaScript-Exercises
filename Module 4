@@ -1,0 +1,264 @@
+1.
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TV Series Search</title>
+</head>
+
+<body>
+    <h1>TV Series Search</h1>
+
+    <form id="searchForm" onsubmit="searchTVSeries(event)">
+        <label for="query">Enter TV Series:</label>
+        <input id="query" type="text" required>
+        <input type="submit" value="Search">
+    </form>
+
+    <script>
+        async function searchTVSeries(event) {
+            event.preventDefault();
+
+            const query = document.getElementById("query").value;
+            const apiUrl = `https://api.tvmaze.com/search/shows?q=${encodeURIComponent(query)}`;
+
+            try {
+                const response = await fetch(apiUrl);
+                const data = await response.json();
+
+                if (data && data.length > 0) {
+                    console.log("Search Results:");
+                    data.forEach((result, index) => {
+                        console.log(`${index + 1}. ${result.show.name}`);
+                        console.log("   Genre: " + (result.show.genres ? result.show.genres.join(", ") : "N/A"));
+                        console.log("   Language: " + result.show.language);
+                        console.log("   Premiered: " + result.show.premiered);
+                        console.log("   Summary: " + (result.show.summary || "N/A"));
+                        console.log("------------------------------");
+                    });
+                } else {
+                    console.log("No results found for the entered query.");
+                }
+            } catch (error) {
+                console.error("Error fetching data:", error);
+            }
+        }
+    </script>
+</body>
+
+</html>
+
+2.
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TV Series Search</title>
+</head>
+
+<body>
+    <h1>TV Series Search</h1>
+
+    <form id="searchForm" onsubmit="searchTVSeries(event)">
+        <label for="query">Enter TV Series:</label>
+        <input id="query" type="text" required>
+        <input type="submit" value="Search">
+    </form>
+
+    <script>
+        async function searchTVSeries(event) {
+            event.preventDefault();
+
+            const query = document.getElementById("query").value;
+            const apiUrl = `https://api.tvmaze.com/search/shows?q=${encodeURIComponent(query)}`;
+
+            try {
+                const response = await fetch(apiUrl);
+                const data = await response.json();
+
+                if (data && data.length > 0) {
+                    console.log("Search Results:");
+                    data.forEach((result, index) => {
+                        console.log(`${index + 1}. ${result.show.name}`);
+                        console.log("   Genre: " + (result.show.genres ? result.show.genres.join(", ") : "N/A"));
+                        console.log("   Language: " + result.show.language);
+                        console.log("   Premiered: " + result.show.premiered);
+                        console.log("   Summary: " + (result.show.summary || "N/A"));
+                        console.log("------------------------------");
+                    });
+                } else {
+                    console.log("No results found for the entered query.");
+                }
+            } catch (error) {
+                console.error("Error fetching data:", error);
+            }
+        }
+    </script>
+</body>
+
+</html>
+
+3.
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TV Series Search</title>
+</head>
+
+<body>
+    <h1>Search</h1>
+
+    <form id="searchForm" onsubmit="searchTVSeries(event)">
+        <label for="query">Enter TV Series:</label>
+        <input id="query" type="text" required>
+        <input type="submit" value="Search">
+    </form>
+
+    <div id="results"></div>
+
+    <script>
+        async function searchTVSeries(event) {
+            event.preventDefault();
+
+            const query = document.getElementById("query").value;
+            const apiUrl = `https://api.tvmaze.com/search/shows?q=${encodeURIComponent(query)}`;
+
+            try {
+                const response = await fetch(apiUrl);
+                const data = await response.json();
+
+                if (data && data.length > 0) {
+                    
+                    document.getElementById("results").innerHTML = '';
+
+                    data.forEach((result, index) => {
+                        const article = document.createElement("article");
+
+                        const nameHeader = document.createElement("h2");
+                        nameHeader.textContent = result.show.name;
+
+                        const detailsLink = document.createElement("a");
+                        detailsLink.href = result.show.url;
+                        detailsLink.target = "_blank";
+                        detailsLink.textContent = "Details";
+
+                        const mediumImage = document.createElement("img");
+                        mediumImage.src = result.show.image?.medium || "no-image-available.jpg"; 
+                        mediumImage.alt = result.show.name;
+
+                        const summaryDiv = document.createElement("div");
+                        summaryDiv.innerHTML = result.show.summary; 
+
+                        article.appendChild(nameHeader);
+                        article.appendChild(detailsLink);
+                        article.appendChild(mediumImage);
+                        article.appendChild(summaryDiv);
+
+                        document.getElementById("results").appendChild(article);
+
+                        console.log(`${index + 1}. ${result.show.name}`);
+                    });
+                } else {
+                    console.log("No results found for the entered query.");
+                }
+            } catch (error) {
+                console.error("Error fetching data:", error);
+            }
+        }
+    </script>
+</body>
+
+</html>
+
+4.
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TV Series Search</title>
+</head>
+
+<body>
+    <h1>TV Series Search</h1>
+
+    <form id="searchForm" onsubmit="searchTVSeries(event)">
+        <label for="query">Enter TV Series:</label>
+        <input id="query" type="text" required>
+        <input type="submit" value="Search">
+    </form>
+
+    <div id="results"></div>
+
+    <script>
+        async function searchTVSeries(event) {
+            event.preventDefault();
+
+            const query = document.getElementById("query").value;
+            const apiUrl = `https://api.tvmaze.com/search/shows?q=${encodeURIComponent(query)}`;
+
+            const defaultImage = 'https://via.placeholder.com/210x295?text=Not%20Found';
+
+            try {
+                const response = await fetch(apiUrl);
+                const data = await response.json();
+
+                if (data && data.length > 0) {
+                    
+                    document.getElementById("results").innerHTML = '';
+
+                    data.forEach((result, index) => {
+                        const article = document.createElement("article");
+
+                        const nameHeader = document.createElement("h2");
+                        nameHeader.textContent = result.show.name;
+
+                        const detailsLink = document.createElement("a");
+                        detailsLink.href = result.show.url;
+                        detailsLink.target = "_blank";
+                        detailsLink.textContent = "Details";
+
+                        const mediumImage = document.createElement("img");
+                        mediumImage.src = result.show.image ? result.show.image.medium : defaultImage;
+                        mediumImage.alt = result.show.name;
+
+                        const summaryDiv = document.createElement("div");
+                        summaryDiv.innerHTML = result.show.summary; 
+
+                        article.appendChild(nameHeader);
+                        article.appendChild(detailsLink);
+                        article.appendChild(mediumImage);
+                        article.appendChild(summaryDiv);
+
+                        document.getElementById("results").appendChild(article);
+
+                        console.log(`${index + 1}. ${result.show.name}`);
+                    });
+                } else {
+                    console.log("No results found for the entered query.");
+                }
+            } catch (error) {
+                console.error("Error fetching data:", error);
+            }
+        }
+    </script>
+</body>
+
+</html>

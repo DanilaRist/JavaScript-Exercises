@@ -1,0 +1,104 @@
+1.
+
+var targetElement = document.getElementById("target");
+
+targetElement.innerHTML = "<li>First item</li><li>Second item</li><li>Third item</li>";
+
+targetElement.classList.add("my-list");
+
+2.
+
+var targetElement = document.getElementById("target");
+
+var li1 = document.createElement("li");
+var li2 = document.createElement("li");
+var li3 = document.createElement("li");
+
+li1.textContent = "First item";
+li2.textContent = "Second item";
+li3.textContent = "Third item";
+
+li2.classList.add("my-item");
+
+targetElement.appendChild(li1);
+targetElement.appendChild(li2);
+targetElement.appendChild(li3);
+
+3.
+
+'use strict';
+const names = ['John', 'Paul', 'Jones'];
+
+const targetElement = document.getElementById("target");
+
+let htmlContent = '';
+
+for (const name of names) {
+    htmlContent += `<li>${name}</li>`;
+}
+
+targetElement.innerHTML = htmlContent;
+
+4.
+
+'use strict';
+
+const students = [
+    {
+        name: 'John',
+        id: '2345768',
+    },
+    {
+        name: 'Paul',
+        id: '2134657',
+    },
+    {
+        name: 'Jones',
+        id: '5423679',
+    },
+];
+
+const targetElement = document.getElementById("target");
+
+for (const student of students) {
+   
+    const optionElement = document.createElement("option");
+
+    optionElement.value = student.id;
+    optionElement.textContent = student.name;
+
+    targetElement.appendChild(optionElement);
+}
+
+5.
+
+const sectionElement = document.getElementById("pictures");
+
+for (const pic of picArray) {
+    const articleElement = document.createElement("article");
+    articleElement.classList.add("card");
+
+    const headingElement = document.createElement("h2");
+    headingElement.textContent = pic.title;
+
+    const figureElement = document.createElement("figure");
+
+    const imageElement = document.createElement("img");
+    imageElement.src = pic.image.medium;
+    imageElement.alt = pic.title;
+
+    const figcaptionElement = document.createElement("figcaption");
+    figcaptionElement.textContent = pic.caption;
+
+    figureElement.appendChild(imageElement);
+    figureElement.appendChild(figcaptionElement);
+
+    const paragraphElement = document.createElement("p");
+    paragraphElement.textContent = pic.description;
+
+    articleElement.appendChild(headingElement);
+    articleElement.appendChild(figureElement);
+    articleElement.appendChild(paragraphElement);
+
+    sectionElement.appendChild(articleElement);
+}
